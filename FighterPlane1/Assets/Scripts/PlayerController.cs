@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     //how to define a variable
     //1. access modifier: public or private
@@ -58,6 +58,11 @@ public class Player : MonoBehaviour
         float yPos = Mathf.Clamp(transform.position.y, yMin, yMax);
         transform.position = new Vector3(transform.position.x, yPos);
         
+    }
+
+    public void LoseALife()
+    {
+        Debug.Log("Player hit!");
     }
 
 }
