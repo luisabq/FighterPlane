@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_3 : MonoBehaviour
 {
+
     public GameObject explosionPrefab;
     
     private GameManager gameManager;
@@ -15,11 +18,16 @@ public class Enemy_3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(new Vector3(-1, -1, 0) * Time.deltaTime * 2f);
+        if (transform.position.y < -6.5f)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
+        Debug.Log("Enemy3 hit: " + whatDidIHit.tag);
         if(whatDidIHit.tag == "Player")
         {
             whatDidIHit.GetComponent<PlayerController>().LoseALife();

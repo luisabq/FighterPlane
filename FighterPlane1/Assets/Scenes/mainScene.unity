@@ -824,6 +824,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 619908759}
   enemyOnePrefab: {fileID: 9207418728420716899, guid: 57d7aa5182902e24cb707961f14f52d5, type: 3}
   enemyTwoPrefab: {fileID: 2966875169381785011, guid: ee8c9c049181a45038f20f75d5c3d689, type: 3}
+  enemyThreePrefab: {fileID: 8364377427350892948, guid: d841b7d454c604e81a59d99e95b57bf5, type: 3}
   cloudPrefab: {fileID: 1156279163363951097, guid: 8e46d10d397f648bdac7c323b65290c7, type: 3}
   livesText: {fileID: 430507738}
   horizontalScreenSize: 0

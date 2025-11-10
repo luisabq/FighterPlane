@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyOnePrefab;
     public GameObject enemyTwoPrefab;
+    public GameObject enemyThreePrefab;
     public GameObject cloudPrefab;
 
     public TextMeshProUGUI livesText;
@@ -31,6 +32,9 @@ public class GameManager : MonoBehaviour
 
         // Enemy Two spawns later and less frequently
         InvokeRepeating("CreateEnemyTwo", 1, 3);
+
+        // Enemy Three spawns later and less frequently
+        InvokeRepeating("CreateEnemyThree", 2, 5);
     }
 
     void Update()
@@ -45,6 +49,11 @@ public class GameManager : MonoBehaviour
     void CreateEnemyTwo()
     {
         Instantiate(enemyTwoPrefab,new Vector3(Random.Range(-8f, 8f), 6.5f, 0),Quaternion.identity);
+    }
+
+    void CreateEnemyThree()
+    {
+        Instantiate(enemyThreePrefab,new Vector3(Random.Range(-8f, 8f), 6.5f, 0),Quaternion.identity);
     }
 
     void CreateSky()
