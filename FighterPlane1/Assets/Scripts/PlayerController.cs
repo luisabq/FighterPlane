@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private float horizontalScreenLimit = 9.5f;
     private float yMin = -3.25f, yMax = 0f;
 
+    public int lives = 3;
+
+
     public GameObject bulletPrefab;
 
     void Start()
