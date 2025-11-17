@@ -13,8 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject cloudPrefab;
     public GameObject healthPrefab;
     private GameObject activeHealthPowerup; 
+    public GameObject coinPrefab;
+
 
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI scoreText;
 
     public float horizontalScreenSize;
     public float verticalScreenSize;
@@ -22,12 +25,16 @@ public class GameManager : MonoBehaviour
     public float healthSpawnRate = 5f;
 
     public int score;
+    public int lives;
 
     void Start()
     {
         horizontalScreenSize = 10f;
         verticalScreenSize = 6.5f;
         score = 0;
+        lives = 3; 
+        scoreText.text = "Score " + score;
+        livesText.text = "Lives " + lives;
 
         CreateSky();
 
@@ -36,8 +43,24 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyTwo", 1, 3);
         InvokeRepeating("CreateEnemyThree", 2, 5);
 
+        //Spawn coin
+        StartCoroutine(SpawnCoin());
+
         // Health Powerup spawns
         InvokeRepeating("SpawnHealth", 3f, healthSpawnRate);
+    }
+
+    IEnumerator SpawnCoin()
+    {
+        float spawnTime = Random.Range(3, 5);
+        yield return new WaitForSeconds(spawnTime);
+        CreateCoin();
+        StartCoroutine(SpawnCoin());
+    }
+
+    void CreateCoin()
+    {
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.3f, verticalScreenSize * 0.3f), 0f), Quaternion.identity);
     }
 
     void Update()
@@ -70,12 +93,23 @@ public class GameManager : MonoBehaviour
     public void AddScore(int earnedScore)
     {
         score += earnedScore;
+        scoreText.text = "Score " + score;
+    }
+
+    public void AddLife()
+    {
+        if (lives < 3)
+        {
+            lives++;
+            ChangeLivesText(lives);
+        }
     }
 
     public void ChangeLivesText(int currentLives)
     {
         livesText.text = "Lives: " + currentLives;
     }
+
 
     void SpawnHealth()
     {
