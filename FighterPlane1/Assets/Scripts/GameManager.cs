@@ -13,8 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject cloudPrefab;
     public GameObject healthPrefab;
     private GameObject activeHealthPowerup; 
+    public GameObject coinPrefab;
+
 
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI scoreText;
 
     public float horizontalScreenSize;
     public float verticalScreenSize;
@@ -36,9 +39,35 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyTwo", 1, 3);
         InvokeRepeating("CreateEnemyThree", 2, 5);
 
+        //Spawn coin
+        StartCoroutine(SpawnCoin());
+
         // Health Powerup spawns
         InvokeRepeating("SpawnHealth", 3f, healthSpawnRate);
     }
+
+    IEnumerator SpawnCoin()
+    {
+        float spawnTime = Random.Range(3, 5);
+        yield return new WaitForSeconds(spawnTime);
+        CreateCoin();
+        StartCoroutine(SpawnCoin());
+    }
+
+    void CreateCoin()
+    {
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.3f, verticalScreenSize * 0.3f), 0f), Quaternion.identity);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
+
+
 
     void Update()
     {
@@ -70,6 +99,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int earnedScore)
     {
         score += earnedScore;
+        scoreText.text = "Score " + score;
     }
 
     public void ChangeLivesText(int currentLives)
