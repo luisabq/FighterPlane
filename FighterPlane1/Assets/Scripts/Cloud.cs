@@ -23,7 +23,7 @@ public class Cloud : MonoBehaviour
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
 
-        if (transform.position.y < -gameManager.verticalScreenSize)
+        if (transform.position.y < -gameManager.verticalScreenSize) 
         {
             transform.position = new Vector3(Random.Range(-gameManager.horizontalScreenSize, gameManager.horizontalScreenSize), gameManager.verticalScreenSize * 1.2f, 0);
         }
