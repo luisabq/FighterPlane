@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class LifePowerup : MonoBehaviour
 {
-    
     private GameManager gameManager;
-
     public float lifetime = 3f;
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, lifetime); // auto self-destruct
     }
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
@@ -22,21 +19,19 @@ public class LifePowerup : MonoBehaviour
 
         if (whatDidIHit.tag == "Player")
         {
-            PlayerController player = whatDidIHit.GetComponent<PlayerController>();
-
-            if (player.lives < 3)
+            // Check GameManager lives instead of player
+            if (gameManager.lives < 3)
             {
-                player.lives++;
-                gameManager.ChangeLivesText(player.lives);
+                gameManager.lives++;
+                gameManager.ChangeLivesText(gameManager.lives);
             }
             else
             {
+                // Full health → give score instead
                 gameManager.AddScore(1);
             }
 
-            Destroy(this.gameObject); // destroy on pickup
+            Destroy(this.gameObject);
         }
     }
-
-
 }

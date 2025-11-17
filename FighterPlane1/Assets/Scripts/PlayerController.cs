@@ -65,7 +65,25 @@ public class PlayerController : MonoBehaviour
 
     public void LoseALife()
     {
-        Debug.Log("Player hit!");
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        gm.lives--;
+
+        if (gm.lives <= 0)
+        {
+            gm.lives = 0;
+            gm.ChangeLivesText(gm.lives);
+            
+            // ADD GAME OVER OR PLAYER DEATH HERE
+            Debug.Log("Player died!");
+            Destroy(gameObject);
+        }
+        else
+        {
+            gm.ChangeLivesText(gm.lives);
+            Debug.Log("Player lost a life. Lives left: " + gm.lives);
+        }
     }
+
 
 }

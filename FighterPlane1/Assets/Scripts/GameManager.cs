@@ -25,12 +25,16 @@ public class GameManager : MonoBehaviour
     public float healthSpawnRate = 5f;
 
     public int score;
+    public int lives;
 
     void Start()
     {
         horizontalScreenSize = 10f;
         verticalScreenSize = 6.5f;
         score = 0;
+        lives = 3; 
+        scoreText.text = "Score " + score;
+        livesText.text = "Lives " + lives;
 
         CreateSky();
 
