@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6538712464723815323}
   - component: {fileID: 3638719064256849150}
   - component: {fileID: 7282309546248117819}
-  - component: {fileID: 1410516926437855478}
+  - component: {fileID: -794343526993516446}
   - component: {fileID: 2800780508998875175}
   m_Layer: 0
   m_Name: Coin
@@ -91,7 +91,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1410516926437855478
+--- !u!114 &-794343526993516446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,10 +100,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 778440574589954718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d1956ec55fc347819923a65a7e1eb2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1297cc1dcac5248b3b1b5868135735fa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LifePowerup
-  lifetime: 3
+  m_EditorClassIdentifier: Assembly-CSharp::Coin
+  lifetime: 5
+  scoreValue: 1
 --- !u!58 &2800780508998875175
 CircleCollider2D:
   m_ObjectHideFlags: 0

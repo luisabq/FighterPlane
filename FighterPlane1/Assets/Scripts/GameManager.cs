@@ -62,16 +62,6 @@ public class GameManager : MonoBehaviour
     {
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.3f, verticalScreenSize * 0.3f), 0f), Quaternion.identity);
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Coin"))
-        {
-            Destroy(other.gameObject);
-        }
-    }
-
-
-
 
     void Update()
     {
@@ -106,10 +96,20 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score " + score;
     }
 
+    public void AddLife()
+    {
+        if (lives < 3)
+        {
+            lives++;
+            ChangeLivesText(lives);
+        }
+    }
+
     public void ChangeLivesText(int currentLives)
     {
         livesText.text = "Lives: " + currentLives;
     }
+
 
     void SpawnHealth()
     {
