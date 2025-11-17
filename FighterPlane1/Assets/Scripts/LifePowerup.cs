@@ -5,25 +5,26 @@ using UnityEngine;
 public class LifePowerup : MonoBehaviour
 {
     private GameManager gameManager;
+
     public float lifetime = 3f;
 
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        Destroy(gameObject, lifetime); // auto self-destruct
+
+        // Destroy if untouched for lifetime duration
+        Destroy(gameObject, lifetime);
     }
 
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
-        Debug.Log("LifePowerup hit: " + whatDidIHit.tag);
-
-        if (whatDidIHit.tag == "Player")
+        // Only act if the player touches it
+        if (whatDidIHit.CompareTag("Player"))
         {
-            // Check GameManager lives instead of player
+            // If player has less than 3 lives, add one
             if (gameManager.lives < 3)
             {
-                gameManager.lives++;
-                gameManager.ChangeLivesText(gameManager.lives);
+                gameManager.AddLife();
             }
             else
             {
@@ -31,7 +32,7 @@ public class LifePowerup : MonoBehaviour
                 gameManager.AddScore(1);
             }
 
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); // destroy power-up on pickup
         }
-    }
+    }   
 }
