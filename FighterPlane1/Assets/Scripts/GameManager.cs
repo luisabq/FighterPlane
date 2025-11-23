@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject healthPrefab;
     private GameObject activeHealthPowerup; 
     public GameObject coinPrefab;
+    public GameObject shieldPrefab;
+
 
 
     public TextMeshProUGUI livesText;
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
     public float verticalScreenSize;
 
     public float healthSpawnRate = 5f;
+    public float shieldSpawnRate = 12f;
 
     public int score;
     public int lives;
@@ -48,6 +51,10 @@ public class GameManager : MonoBehaviour
 
         // Health Powerup spawns
         InvokeRepeating("SpawnHealth", 3f, healthSpawnRate);
+
+        // Shield Powerup spawns
+        InvokeRepeating("SpawnShield", 5f, shieldSpawnRate);
+
     }
 
     IEnumerator SpawnCoin()
@@ -129,5 +136,14 @@ public class GameManager : MonoBehaviour
         // Spawn the new powerup
         Instantiate(healthPrefab, spawnPos, Quaternion.identity);
     }
+
+    void SpawnShield()
+    {
+        float randomX = Random.Range(-horizontalScreenSize, horizontalScreenSize);
+        float randomY = Random.Range(-verticalScreenSize, 0f); // bottom half
+
+        Instantiate(shieldPrefab, new Vector3(randomX, randomY, 0f), Quaternion.identity);
+    }
+
 
 }

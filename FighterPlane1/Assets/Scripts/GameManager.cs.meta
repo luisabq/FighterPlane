@@ -11,6 +11,7 @@ MonoImporter:
   - cloudPrefab: {fileID: 1156279163363951097, guid: 8e46d10d397f648bdac7c323b65290c7, type: 3}
   - healthPrefab: {fileID: 778440574589954718, guid: d8e4ccc913b2747f4a25831d44098fa8, type: 3}
   - coinPrefab: {fileID: 778440574589954718, guid: 7907b2a710a5d6a41ac499864d2b787a, type: 3}
+  - shieldPrefab: {fileID: 7740885568803125581, guid: ef60edaf937ef45f58130bef0e38f2a6, type: 3}
   - livesText: {fileID: 8598599768951724843, guid: d3ad66756028b4bb2900cbb630cbed61, type: 3}
   - scoreText: {fileID: 1965654693374735943, guid: 9aaabf4459b0a488c89cf60649b3c516, type: 3}
   executionOrder: 0

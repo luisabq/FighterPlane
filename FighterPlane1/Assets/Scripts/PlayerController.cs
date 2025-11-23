@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
 
     public int lives = 3;
 
+    public bool shieldActive = false;
+    public float shieldDuration = 5f;
+    private float shieldTimer = 0f;
+
+
 
     public GameObject bulletPrefab;
 
@@ -34,6 +39,20 @@ public class PlayerController : MonoBehaviour
         //This function is called every frame; 60 frames/second
         Movement();
         Shooting();
+
+        if (shieldActive)
+        {
+            shieldTimer -= Time.deltaTime;
+
+            if (shieldTimer <= 0f)
+            {
+                shieldActive = false;
+
+                // Optional: TURN OFF shield visual
+                // shieldVisual.SetActive(false);
+            }
+        }
+
 
     }
 
@@ -67,14 +86,21 @@ public class PlayerController : MonoBehaviour
     {
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
 
+        // If shield is active, prevent life loss
+        if (shieldActive)
+        {
+            shieldActive = false;
+            Debug.Log("Shield absorbed the hit!");
+            return;
+        }
+
+        // If no shield, lose life
         gm.lives--;
 
         if (gm.lives <= 0)
         {
             gm.lives = 0;
             gm.ChangeLivesText(gm.lives);
-            
-            // ADD GAME OVER OR PLAYER DEATH HERE
             Debug.Log("Player died!");
             Destroy(gameObject);
         }
@@ -83,6 +109,16 @@ public class PlayerController : MonoBehaviour
             gm.ChangeLivesText(gm.lives);
             Debug.Log("Player lost a life. Lives left: " + gm.lives);
         }
+    }
+
+
+    public void ActivateShield()
+    {
+        shieldActive = true;
+        shieldTimer = shieldDuration;
+
+        // Optional: TURN ON a glow or shield visual
+        // shieldVisual.SetActive(true);
     }
 
 
