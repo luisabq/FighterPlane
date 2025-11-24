@@ -416,6 +416,7 @@
 "Assets/Scripts/Glider.cs"
 "Assets/Scripts/LifePowerup.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/ShieldPowerup.cs"
 -langversion:9.0
 /deterministic
 /optimize+
