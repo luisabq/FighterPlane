@@ -33,6 +33,22 @@ public class PlayerController : MonoBehaviour
         //This function is called at the start of the game
         
     }
+//new-sophia
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if(whatDidIHit.tag == "Powerup")
+        {
+            Destory(whatDidIHit.gameObject);
+            int whichPowerup = Random.Range(1, 5):
+            gameManager.PlaySound(1);
+            switch(whichPowerup)
+            {
+                case 1:
+                gameManager.ManagerPowerupText(1);
+                break;
+            }
+        }
+    }
 
     void Update()
     {
@@ -110,7 +126,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player lost a life. Lives left: " + gm.lives);
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        
+    }
 
     public void ActivateShield()
     {
