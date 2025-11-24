@@ -72,6 +72,8 @@ public class GameManager : MonoBehaviour
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.3f, verticalScreenSize * 0.3f), 0f), Quaternion.identity);
     }
 
+
+
     void Update()
     {
     }
