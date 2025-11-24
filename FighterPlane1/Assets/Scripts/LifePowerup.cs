@@ -21,6 +21,8 @@ public class LifePowerup : MonoBehaviour
         // Only act if the player touches it
         if (whatDidIHit.CompareTag("Player"))
         {
+            gameManager.PlaySound(1);            
+            
             // If player has less than 3 lives, add one
             if (gameManager.lives < 3)
             {

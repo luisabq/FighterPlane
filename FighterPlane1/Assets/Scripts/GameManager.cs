@@ -16,9 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject shieldPrefab;
 
-    public GameObject audioPlayer;
-    public AudioClip powerUpSound;
-    public AudioClip powerDownSound;
+
 
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
@@ -31,6 +29,10 @@ public class GameManager : MonoBehaviour
 
     public int score;
     public int lives;
+
+    public GameObject audioPlayer;
+    public AudioClip powerUpSound;
+    public AudioClip powerDownSound;
 
     void Start()
     {
@@ -72,8 +74,6 @@ public class GameManager : MonoBehaviour
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.3f, verticalScreenSize * 0.3f), 0f), Quaternion.identity);
     }
 
-
-
     void Update()
     {
     }
@@ -91,21 +91,6 @@ public class GameManager : MonoBehaviour
     void CreateEnemyThree()
     {
         Instantiate(enemyThreePrefab, new Vector3(Random.Range(-8f, 8f), 6.5f, 0), Quaternion.identity);
-    }
-
-    public void PlaySound(int whichSound)
-    {
-        switch(whichSound)
-        {
-            case 1:
-                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
-                break;
-            case 2:
-                audioPlayer.GetComponent<AudioSource>.PlayOneShot(powerDownSound);
-                break;
-            
-
-        }
     }
 
     void CreateSky()
@@ -169,8 +154,20 @@ public class GameManager : MonoBehaviour
         Instantiate(shieldPrefab, new Vector3(randomX, randomY, 0f), Quaternion.identity);
     }
 
+    public void PlaySound(int whichSound)
+    {
+        switch (whichSound)
+        {
+            case 1:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
+                break;
+            case 2:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
+                break;
+        }
+    }
+
+
 
 
 }
-
-

@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     //3. variable name: camelCase
     //4. value: optional
 
+    private GameManager gameManager;
+
     private float playerSpeed;
     private float horizontalInput;
     private float verticalInput;
@@ -29,25 +31,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerSpeed = 6f;
         //This function is called at the start of the game
         
-    }
-//new-sophia
-    private void OnTriggerEnter2D(Collider2D whatDidIHit)
-    {
-        if(whatDidIHit.tag == "Powerup")
-        {
-            Destory(whatDidIHit.gameObject);
-            int whichPowerup = Random.Range(1, 5):
-            gameManager.PlaySound(1);
-            switch(whichPowerup)
-            {
-                case 1:
-                gameManager.ManagerPowerupText(1);
-                break;
-            }
-        }
     }
 
     void Update()
@@ -112,6 +99,7 @@ public class PlayerController : MonoBehaviour
 
         // If no shield, lose life
         gm.lives--;
+        gm.PlaySound(2);
 
         if (gm.lives <= 0)
         {
@@ -126,10 +114,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player lost a life. Lives left: " + gm.lives);
         }
     }
-    private void OnTriggerEnter2D(Collider2D whatDidIHit)
-    {
-        
-    }
+
 
     public void ActivateShield()
     {
