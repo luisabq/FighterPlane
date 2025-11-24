@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     public GameObject coinPrefab;
     public GameObject shieldPrefab;
 
-
+    public GameObject audioPlayer;
+    public AudioClip powerUpSound;
+    public AudioClip powerDownSound;
 
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI scoreText;
@@ -87,6 +89,21 @@ public class GameManager : MonoBehaviour
     void CreateEnemyThree()
     {
         Instantiate(enemyThreePrefab, new Vector3(Random.Range(-8f, 8f), 6.5f, 0), Quaternion.identity);
+    }
+
+    public void PlaySound(int whichSound)
+    {
+        switch(whichSound)
+        {
+            case 1:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
+                break;
+            case 2:
+                audioPlayer.GetComponent<AudioSource>.PlayOneShot(powerDownSound);
+                break;
+            
+
+        }
     }
 
     void CreateSky()
