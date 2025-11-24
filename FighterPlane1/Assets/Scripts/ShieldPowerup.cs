@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ShieldPowerup : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public float lifetime = 6f; // auto-destroy after a while
 
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         Destroy(gameObject, lifetime);
     }
 
@@ -15,6 +18,7 @@ public class ShieldPowerup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            gameManager.PlaySound(1);
             PlayerController player = other.GetComponent<PlayerController>();
             player.ActivateShield();
             Destroy(gameObject);
