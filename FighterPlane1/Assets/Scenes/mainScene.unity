@@ -845,7 +845,7 @@ MonoBehaviour:
   enemyOnePrefab: {fileID: 9207418728420716899, guid: 57d7aa5182902e24cb707961f14f52d5, type: 3}
   enemyTwoPrefab: {fileID: 2966875169381785011, guid: ee8c9c049181a45038f20f75d5c3d689, type: 3}
   enemyThreePrefab: {fileID: 8364377427350892948, guid: d841b7d454c604e81a59d99e95b57bf5, type: 3}
-  cloudPrefab: {fileID: 1156279163363951097, guid: 8e46d10d397f648bdac7c323b65290c7, type: 3}
+  cloudPrefab: {fileID: 6655303882055009754, guid: 8e46d10d397f648bdac7c323b65290c7, type: 3}
   healthPrefab: {fileID: 778440574589954718, guid: d8e4ccc913b2747f4a25831d44098fa8, type: 3}
   coinPrefab: {fileID: 778440574589954718, guid: 7907b2a710a5d6a41ac499864d2b787a, type: 3}
   shieldPrefab: {fileID: 6140546884707205811, guid: ef60edaf937ef45f58130bef0e38f2a6, type: 3}

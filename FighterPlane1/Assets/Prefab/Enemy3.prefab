@@ -149,4 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f74a90c27504d4fa07791125a7651a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_3
-  explosionPrefab: {fileID: 7396592135499445769, guid: 53b5dabf00bde4434a6ffdeee04e841b, type: 3}
+  explosionPrefab: {fileID: 6275193644386752971, guid: eb5d4344393ea42638b96ff97a3bee60, type: 3}
